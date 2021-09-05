@@ -8,7 +8,7 @@ def welcome_assignment_answers(question):
                      "#cyberfellows-computernetworking-fall2021 channel posted by a TA?":
         answer = "mTLS"
     elif question == "Is it possible to decode a message without a key? - Yes/No":
-        answer = "No"
+        answer = "Yes"
     elif question == "Is a hashed message supposed to be un-hashed? - Yes/No":
         answer = "No"
     elif question == "What is the MD5 hashing value to the following message: 'NYU Computer Networking' " \
