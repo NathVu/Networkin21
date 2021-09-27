@@ -13,6 +13,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Create socket called clientSocket and establish a TCP connection with mailserver and port
     clientSocket, addr = serverSocket.accept()
+    clientSocket.connect(mailserver, port)
     # Fill in start
     # Fill in end
 
