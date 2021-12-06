@@ -10,8 +10,8 @@ import binascii
 # use mac or linux terminal to run code using sudo Python testing.py
 ICMP_ECHO_REQUEST = 8
 MAX_HOPS = 30
-TIMEOUT = 2.0
-TRIES = 2
+TIMEOUT = 21.0
+TRIES = 5
 
 
 # The packet that we shall send to each router along the path is the ICMP echo
