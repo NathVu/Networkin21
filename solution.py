@@ -116,16 +116,15 @@ def get_route(hostname):
                 icmpHeader = recvPacket[20:28]
                 request_type, code, checksum, packetID, sequence = struct.unpack("bbHHh", icmpHeader)
                 try:  # try to fetch the hostname
-                    new_hostname = socket.gethostbyaddr(hostip)[0]
-                except Exception:  # if the host does not provide a hostname
+                    new_hostname = socket.gethostbyaddr(addr[0])[0]
+                except herror:  # if the host does not provide a hostname
                     new_hostname = "hostname not returnable"
 
                 if request_type == 11:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
-                    tracelist2.append("%d   %.0f %s" % (ttl, 0, "Request timed out"))
-                    print("%d   %.0f %s" % (ttl, 0, "Request timed out"))
-                    return tracelist2
+                    print("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
+                    tracelist2.append("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
                 elif request_type == 3:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
@@ -142,4 +141,4 @@ def get_route(hostname):
                     break
             finally:
                 mySocket.close()
-get_route("www.google.com")
+get_route("www.bing.com")
