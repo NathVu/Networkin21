@@ -98,8 +98,8 @@ def get_route(hostname):
 
                 if whatReady[0] == []:  # Timeout
                     tracelist1.append("*    *    * Request timed out.")
-                    tracelist2.append("%d   %.0f %s" % (ttl, 0, "Request timed out"))
-                    print("%d   %.0f %s" % (ttl, 0, "Request timed out"))
+                    tracelist2.append("%d   %s %s" % (ttl, "*", "Request timed out"))
+                    print("%d   %s %s" % (ttl, "*", "Request timed out"))
                 recvPacket, addr = mySocket.recvfrom(1024)
                 print(addr)
                 timeReceived = time.time()
@@ -107,8 +107,8 @@ def get_route(hostname):
 
                 if timeLeft <= 0:
                     tracelist1.append("*    *    * Request timed out.")
-                    tracelist2.append("%d   %.0f %s" % (ttl, 0, "Request timed out"))
-                    print("%d   %.0f %s" % (ttl, 0, "Request timed out"))
+                    tracelist2.append("%d   %s %s" % (ttl, "*", "Request timed out"))
+                    print("%d   %s %s" % (ttl, "*", "Request timed out"))
             except socket.timeout:
                 continue
 
