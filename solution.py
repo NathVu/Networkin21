@@ -101,7 +101,6 @@ def get_route(hostname):
                     tracelist2.append("%d   %s %s" % (ttl, "*", "Request timed out"))
                     print("%d   %s %s" % (ttl, "*", "Request timed out"))
                 recvPacket, addr = mySocket.recvfrom(1024)
-                print(addr)
                 timeReceived = time.time()
                 timeLeft = timeLeft - howLongInSelect
 
@@ -141,4 +140,4 @@ def get_route(hostname):
                     break
             finally:
                 mySocket.close()
-#get_route("www.bing.com")
+get_route("www.bing.com")
