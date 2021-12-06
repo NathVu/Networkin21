@@ -106,6 +106,7 @@ def get_route(hostname):
                     #You should add the list above to your all traces list
                     #Fill in end
                 recvPacket, addr = mySocket.recvfrom(1024)
+                print(addr)
                 timeReceived = time.time()
                 timeLeft = timeLeft - howLongInSelect
                 if timeLeft <= 0:
@@ -126,7 +127,9 @@ def get_route(hostname):
                 #Fill in end
                 try: #try to fetch the hostname
                     #Fill in start
-                    new_hostname = socket.gethostbyaddr(hostip)[0]
+                    new_hostname = socket.gethostbyaddr(hostip)
+                    print(new_hostname)
+                    print(new_hostname[0])
                     #Fill in end
                 except Exception:   #if the host does not provide a hostname
                     #Fill in start
@@ -160,9 +163,8 @@ def get_route(hostname):
                     #Fill in end
                 else:
                     #Fill in start
-                    tracelist2.append("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
-                    print("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
                     #If there is an exception/error to your if statements, you should append that to your list here
+                    tracelist2.append("%d   %.0f %s" % (ttl, 0, "Request timed out"))
                     #Fill in end
                 break
             finally:
@@ -170,5 +172,5 @@ def get_route(hostname):
 
     return tracelist2
 
-#et_route("www.google.com")
+get_route("www.makeinindia.com")
 
