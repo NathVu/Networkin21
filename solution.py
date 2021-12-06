@@ -168,5 +168,7 @@ def get_route(hostname):
             finally:
                 mySocket.close()
 
-get_route("www.google.com")
+    return tracelist2
+
+#et_route("www.google.com")
 
