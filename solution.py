@@ -123,8 +123,9 @@ def get_route(hostname):
                 if request_type == 11:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
-                    print("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
-                    tracelist2.append("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
+                    tracelist2.append("%d   %.0f %s" % (ttl, 0, "Request timed out"))
+                    print("%d   %.0f %s" % (ttl, 0, "Request timed out"))
+                    return tracelist2
                 elif request_type == 3:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
@@ -141,4 +142,4 @@ def get_route(hostname):
                     break
             finally:
                 mySocket.close()
-#get_route("www.google.com")
+get_route("www.google.com")
