@@ -141,4 +141,4 @@ def get_route(hostname):
                     break
             finally:
                 mySocket.close()
-get_route("www.makeindia.com")
+#get_route("www.makeindia.com")
