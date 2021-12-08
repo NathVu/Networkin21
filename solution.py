@@ -90,7 +90,7 @@ def get_route(hostname):
             mySocket.settimeout(TIMEOUT)
             try:
                 d = build_packet()
-                mySocket.sendto(d, (destAddr, 0))
+                mySocket.sendto(d, (hostname, 0))
                 t = time.time()
                 startedSelect = time.time()
                 whatReady = select.select([mySocket], [], [], timeLeft)
@@ -132,6 +132,7 @@ def get_route(hostname):
                 elif request_type == 0:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
+                    print("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
                     tracelist1.append("%d   rtt=%.0f ms %s %s" % (ttl, (timeReceived - t) * 1000, addr[0], new_hostname))
                     tracelist2.append(tracelist1)
                     print(tracelist2)
@@ -141,4 +142,4 @@ def get_route(hostname):
                     break
             finally:
                 mySocket.close()
-#get_route("www.makeindia.com")
+get_route("www.makeindia.com")
